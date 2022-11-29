@@ -1,0 +1,22 @@
+.mycard-header {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-radius: 15px;
+    height: 300px; 
+}
+
+.mycard-body {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.mycard-header img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

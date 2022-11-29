@@ -1,0 +1,38 @@
+/* css for side bar */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1000;
+    padding: 2vh 0vw;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 1px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#sideNavUserProfile{
+    text-align: center;
+    margin: 10px 0px;
+}
+
+#sideNavMenu {
+    margin: 30px;
+}
+
+#sideNavMenu h5 {
+    margin-bottom: 30px;
+}

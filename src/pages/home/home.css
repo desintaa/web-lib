@@ -1,0 +1,15 @@
+.new-book {
+    margin: 50px 0px 0px 0px;
+}
+
+.list-book{
+    padding: 50px 30px;
+}
+
+.list-book .row {
+    padding: 20px 0px;
+}
+
+.card {
+    position: static;
+}

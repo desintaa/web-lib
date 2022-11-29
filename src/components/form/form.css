@@ -1,0 +1,71 @@
+.bgImage {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+    url("./photo-lib.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.mytext {
+    color: #F9F9F9;
+    width: 55%;
+    margin: 70px 50px;
+}
+
+.logoLibrary {
+    height: 75px;
+    margin: 5px 5px 0px 0px;
+}
+
+.flex-container-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rowBottom {
+    padding: 0vh 5vw;
+    margin-bottom: 20px;
+    font-size: small;
+}
+
+.rowMiddle {
+    padding: 0vh 5vw;
+}
+
+.rowMiddle {
+    font-size: small;
+    position: relative;
+}
+
+.form-register label {
+    display: block;
+    color: #D0CCCC;
+}
+
+.form-register input {
+    border: none;
+    width: 100%;
+}
+
+.form-login label {
+    display: block;
+    color: #D0CCCC;
+}
+
+.form-login input {
+    border: none;
+    width: 100%;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 30px 0px;
+}
+
+.container-button a {
+    margin-right: 12px;
+    padding: 5px 24px;
+    font-size: small;
+}

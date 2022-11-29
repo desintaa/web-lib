@@ -1,0 +1,12 @@
+.carousel {
+  box-sizing: border-box;
+  height: 300px;
+}
+
+.carousel-cell {
+  overflow: hidden;
+  width: 66vw;
+  border-radius: 15px;
+  counter-increment: carousel-cell;
+  margin: 0px 25px;
+}

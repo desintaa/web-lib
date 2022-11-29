@@ -1,0 +1,51 @@
+/* css for navbar */
+
+main header {
+    height: 10vh; 
+    width: 100%; 
+    padding: 1vh 0; 
+    position: fixed; 
+    background-color:white; 
+    z-index: 100;
+}
+
+.container-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 8vh;
+}
+
+.container-logo {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border: 1px solid #CACACA;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 0 5vw;
+}
+
+.search-input .input {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+}
+
+.search-box .search-icon {
+    color: #CACACA;
+    margin-left: 20px;
+    margin-right: 10px;
+}
