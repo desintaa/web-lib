@@ -15,6 +15,7 @@ function Router() {
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
                 <Route exact path="/detail/:title" element={<Detail />} />
+                <Route exact path="/detail-hardcode" element={<Detail />} />
             </Routes>
         </BrowserRouter>
     )

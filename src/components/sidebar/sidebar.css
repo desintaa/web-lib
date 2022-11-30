@@ -1,8 +1,8 @@
 /* css for side bar */
 
-.sidenav {
+#mySideNav {
     height: 100%;
-    width: 0;
+    width: 30vw;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -35,4 +35,10 @@
 
 #sideNavMenu h5 {
     margin-bottom: 30px;
+}
+
+#sideNavMenu a {
+    padding: 0;
+    text-decoration: none;
+    color: black;
 }

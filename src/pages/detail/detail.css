@@ -42,18 +42,12 @@
     padding: 20px 5vw;
 }
 
-.mybuttonYellow {
-    background-color: #FBCC38;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 40px;
+.detailContent .mybuttonYellow {
     position: absolute;
     bottom: 0;
     right: 0;
 }
 
-.mybuttonYellow:hover {
-    background-color: #d4ae30;
-    color: white;
+.modal .mybuttonYellow {
+    margin: 10px 0px;
 }
