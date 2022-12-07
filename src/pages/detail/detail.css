@@ -3,17 +3,17 @@
     height: 100vh;
 }
 
-#myBookDetail .bookImageSmall {
+#myBookDetail .thumbnail {
     position: relative;
 }
 
-#myBookDetail .bookImageSmall div {
+#myBookDetail .thumbnail div {
     position: absolute;
     right: 5vw;
     top: 20vh;
 }
 
-#myBookDetail .bookImageSmall img {
+#myBookDetail .thumbnail img {
     border-radius: 15px;
 }
 
@@ -28,6 +28,8 @@
     width: 100%;
     object-fit: cover;
     object-position: center center;
+    /* filter: brightness(50%); */
+    overflow: hidden;
 }
 
 #myBookDetail #header .btn {

@@ -1,33 +1,25 @@
 import './navbar.css'
-import React,{useState} from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import Sidebar from '../sidebar/sidebar'
+import { toggleSideBar } from '../functions'
 
 const iconSearch = <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
 
 function Navbar() {
-    
-    // in default -> side bar is hidden
-    const [showSideBar, setShowSideBar] = useState(false)
-
     return(
-        < >
-        {/* NAVIGATION BAR */}
         <header className="shadow">
             <nav id="myNavBar" className="d-flex flex-row justify-content-between mx-4 my-1">
                 
-                {/* Side Bar Menu */}
-                <div id="menu-in-navbar" className="p-2">
+                <div id="btnSideBar" className="p-2">
                     <div style={{padding: '5px 0px', marginRight: '10px'}}>
-                        <div id='myButtonMenu' style={{cursor: 'pointer'}} onClick={()=>setShowSideBar(true)}>
+                        <a role={"button"} onClick={toggleSideBar}>
                             <img src="images/ic-menu.png" />
-                        </div>
+                        </a>
                     </div>
                 </div>
 
-                {/* All Categories */}
-                <div className="p-2">
+                <div id='allCategories' className="p-2">
                     <a style={{padding: '5px 0px'}} className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All Categories</a>
                     <ul className="dropdown-menu shadow" style={{border: 'none'}}>
                         <li><a className="dropdown-item" href="#">Action and Adventure</a></li>
@@ -39,8 +31,7 @@ function Navbar() {
                     </ul>                
                 </div>
 
-                {/* All Time */}
-                <div className="p-2">
+                <div id='allTime' className="p-2">
                     <a style={{padding: '5px 0px'}} className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All Time</a>
                     <ul className="dropdown-menu" style={{border: 'none'}}>
                         <li><a className="dropdown-item" href="#">Past week</a></li>
@@ -50,8 +41,7 @@ function Navbar() {
                     </ul>
                 </div>
 
-                {/* Search Bar */}
-                <div className="p-2 flex-grow-1 text-center">
+                <div id='searchBar' className="p-2 flex-grow-1 text-center">
                     <div className="search-container">
                         <div className="search-box">
                             <div className="search-icon">
@@ -64,21 +54,18 @@ function Navbar() {
                     </div>
                 </div>
 
-                {/* Logo & Text Library */}
                 <div className="p-1">
-                <div style={{padding: '3px 0px'}}>
-                    <img src="images/ic-lib.png" height="40px" />
+                    <div style={{padding: '3px 0px'}}>
+                        <img src="images/ic-lib.png" height="40px" />
+                    </div>
                 </div>
-                </div>
+
                 <div className="py-2 pe-2">
-                <h4 style={{padding: '5px 0px'}}>Library</h4>
+                    <h4 style={{padding: '5px 0px'}}>Library</h4>
                 </div>
+
             </nav>                
         </header>
-
-        {showSideBar?<Sidebar/>:null}
-        
-        </ >
     )
 }
 

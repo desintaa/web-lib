@@ -1,16 +1,14 @@
 /* css for side bar */
 
-#mySideNav {
-    height: 100%;
-    width: 30vw;
-    position: fixed;
-    z-index: 1;
+.sidenav {
+    height: auto;
+    width: auto;
+    /* position: fixed; */
     top: 0;
     left: 0;
     background-color: white;
-    overflow-x: hidden;
-    transition: 0.5s;
-    z-index: 1000;
+    /* overflow-x: hidden;
+    transition: 0.5s; */
     padding: 2vh 0vw;
 }
 
@@ -26,7 +24,9 @@
 
 #sideNavUserProfile{
     text-align: center;
-    margin: 10px 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    /* margin: 10px 0px; */
 }
 
 #sideNavMenu {
@@ -41,4 +41,22 @@
     padding: 0;
     text-decoration: none;
     color: black;
+}
+
+#btnLogout{
+    background-color: white;
+    color: black;
+}
+
+#btnLogout:hover{
+    filter: invert(1);
+}
+
+#mySideNav2 {
+    text-align: center;
+    padding: 50px 0px;
+}
+
+#mySideNav2 h6{
+    margin: 10px 0px;
 }

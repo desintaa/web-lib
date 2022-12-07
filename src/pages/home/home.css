@@ -1,3 +1,17 @@
+#home {
+    width: 100vw;
+    overflow: hidden;
+}
+
+#content {
+    padding: 0px;
+}
+
+#sidebar {
+    padding: 0px;
+    z-index: 1000;
+}
+
 .new-book {
     margin: 50px 0px 0px 0px;
 }

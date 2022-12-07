@@ -1,7 +1,14 @@
 import './form.css'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useCallback } from 'react'
+
 
 function FormRegister() {
+
+    const navigate = useNavigate()
+    const goToLogin = useCallback(() => navigate('/login', {replace: true}, [navigate]))
+
     return (
         <>
         <main id="loginRegister" className='row' style={{width:'100%'}}>
@@ -39,8 +46,12 @@ function FormRegister() {
                                 </ul>
                             </div>
                             <div className="container-button">
-                                <a href='#' className="btn btn-dark" id="button-register" type="submit">Sign Up</a>
-                                <a href="/login" className="btn btn-outline-secondary">Login</a>
+                                <button className="btn btn-dark" id="button-register" type="submit">Sign Up</button>
+                                {/* <Link to="/login">
+                                    <button className="btn btn-outline-secondary">Login</button>
+                                </Link> */}
+                                    <button className="btn btn-outline-secondary" onClick={goToLogin}>Login</button>
+
                             </div> 
                         </form>
                     </div>

@@ -1,7 +1,90 @@
 import './form.css'
 import React from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useCallback } from 'react'
+
+// function authLogin() {
+
+//     const email = document.getElementById('email-login')
+//     const password = document.getElementById('password-login')
+//     const btnLogin = document.getElementById('button-login')
+
+//     const savedEmail = 'desin@mail.com'
+//     const savedPassword = '1234'
+
+//     console.log(email.value)
+//     console.log(password.value)
+
+//     if (email.value !== savedEmail) {
+//         return alert('Email address is not registered yet')
+//     } else {
+//         if (password.value !== savedPassword) {
+//             return alert('Wrong password, please try again')
+//         } else {
+//             navigate('/', {replace:true}, [navigate])
+//             return alert('success login')
+//             // return <Link to="/o"></Link>
+//             // return <Navigate to="/"/>
+//         }
+//     }
+
+    // const savedEmail = email.parentElement.parentElement
+    // const savedPassword = password.parentElement.parentElement
+
+    // email.addEventListener('input', (e) => {
+    //     savedEmail.children[2].classList.remove('show')
+    // })
+
+    // email.addEventListener('input', () => {
+    //     savedPassword.children[2].classList.remove('show')
+    // })
+
+    // btnLogin.addEventListener('click', (e) => {
+    //     e.preventDefault()
+
+    //     if (email.value !== 'desin@mail.com') {
+    //         savedEmail.children[2].classList.add('show')
+    //         return
+    //     }
+
+    //     if (password.value !== '1234') {
+    //         parentPassword.children[2].classList.add('show')
+    //         return
+    //     }
+
+    //     <Link to="/"></Link>
+    // })
+
+// }
 
 function FormLogin() {
+    const navigate = useNavigate()
+
+    const goToRegister = useCallback(() => navigate('/register', {replace:true}, [navigate]))
+
+    function authLogin() {
+        const email = document.getElementById('email-login')
+        const password = document.getElementById('password-login')
+        const btnLogin = document.getElementById('button-login')
+
+        const savedEmail = 'desin@mail.com'
+        const savedPassword = '1234'
+
+        console.log(email.value)
+        console.log(password.value)
+
+        if (email.value !== savedEmail) {
+            return alert('Email address is not registered yet')
+        } else {
+            if (password.value !== savedPassword) {
+                return alert('Wrong password, please try again')
+            } else {
+                navigate('/', {replace:true}, [navigate])
+                localStorage.setItem("isAuth","true")
+            }
+        }
+    }
+
     return (
         <main id="loginRegister" className='row' style={{width:'100%'}}>
             <div className="col-7 bgImage" style={{height:'100vh'}}>
@@ -30,8 +113,8 @@ function FormLogin() {
                                     </ul>
                                 </div>
                                 <div className="container-button" style={{marginTop: '70px'}}>
-                                    <a href='/' className="btn btn-dark" id="button-login" type="submit">Login</a>
-                                    <a href="/register" className="btn btn-outline-secondary">Sign up</a>
+                                    <button className="btn btn-dark" id="button-login" type="submit" onClick={()=>{authLogin()}}>Login</button>
+                                    <button className="btn btn-outline-secondary" onClick={goToRegister}>Sign up</button>
                                 </div> 
                             </form>
                         </div>

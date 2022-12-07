@@ -1,45 +1,67 @@
 import './detail.css'
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, {useState} from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { bookData } from '../../data-dummy/book-data'
+import { isHeaderEmpty } from '../../components/functions'
 
-function Detail() {
-    // const {title} = useParams()
+function Detail({props}) {
+    // const [bookDetail, setDetail] = useState({})
+    var {title} = useParams()
+
+    const navigate = useNavigate()
+
+    // const getDetail = async() => {
+    //     try {
+    //         const {data} = 
+    //     }
+    // }
+
+    // localStorage.setItem("bookTitle",title)
+    // var bookTitle = (localStorage.getItem("bookTitle"))
+    // console.log(bookTitle)
 
     return (
         <>
-        <div id='myBookDetail'>
-            <div className='bookImageSmall'>
-                <div>
-                    <img src="images/img-dilan-1990.jpg" width="180px" />
-                </div>
-            </div>
-
-            <div id='header'>
-                <img className='headerImage' src='images/img-dilan-1990.jpg'/>
-                <a id="back-button-on-detail" href="/" role="button" className="btn btn-link" style={{position: 'fixed', top: 0, left: 0}}>
-                    <img src="images/ic-arrow-left.png" width={'60px'} />
-                </a>
-                <a type="button" className="btn btn-link" style={{right: '150px'}} data-bs-toggle="modal" data-bs-target="#modal-edit-book"><h5>Edit</h5></a>
-                <a type="button" className="btn btn-link" style={{right: '5vw'}} data-bs-toggle="modal" data-bs-target="#modal-delete-book"><h5>Delete</h5></a>
-            </div>
-            <div className='detailContent'>
-                <div className="row">
-                    <div className="col">
-                        <div className="row">
-                            <div className="col" style={{marginBottom: '20px'}}>
-                                <button type="button" className="btn btn-warning text-white" style={{borderRadius: '15px', padding: '1px 20px', backgroundColor: '#FBCC38', border: 'none'}}>Novel</button>
-                                <h1 style={{margin: '5px 0'}}><b>dilan</b></h1>
-                                <p><b>30 Juni 2019</b></p>
-                            </div>
-                            <div className="col text-end" style={{padding: '40px 0'}}>
-                                <h4 style={{color: '#99D815'}}><b>Available</b></h4>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac diam eget est rutrum ultrices. Donec laoreet enim a massa dapibus, cursus egestas dui pulvinar. Proin sit amet accumsan lectus. Nullam auctor auctor consequat. Donec semper magna erat, sed fringilla lacus pretium eget. Cras porttitor, nibh sit amet interdum bibendum, nibh velit accumsan tellus, vel vehicula tellus leo vitae ipsum. Praesent sit amet libero sed orci ullamcorper efficitur. Pellentesque in euismod purus, sit amet ultrices tortor. Vestibulum ante dui, tempor at dui id, tincidunt euismod diam. Integer pellentesque massa nibh, ac eleifend odio malesuada sed. Phasellus orci sem, cursus nec orci ut, accumsan facilisis lacus. Nullam at elementum nibh, ac gravida felis. In sagittis rhoncus nisi tempus dignissim. Sed fringilla consequat ante vitae lobortis. Cras posuere ligula vel enim suscipit malesuada. Vivamus non nulla ut ante imperdiet euismod quis nec massa.</p>
+        {
+            bookData
+            .filter((data) => data.title === title)
+            .map((data) =>
+            <>
+            
+            <div id='myBookDetail'>
+                <div className='thumbnail'>
+                    <div>
+                        <img className='bookImageSmall shadow-lg' src={data.imageUrl} alt='book cover' width="180px" />
                     </div>
-                    <div className="col-1 text-center"></div>
-                    <div className="col-3 text-end"  style={{position: 'relative'}}>
-                        <button type="button" className="btn btn-warning mybuttonYellow shadow"><h5>Borrow</h5></button>
+                </div>
+
+                <div id='header'>
+                    <img className='headerImage' src={isHeaderEmpty(data)} alt='book cover for header'/>
+                    <a id="back-button-on-detail" role="button" onClick={() => navigate(-1)} className="btn btn-link" style={{position: 'fixed', top: 0, left: 0}}>
+                        <img src="https://drive.google.com/uc?export=view&id=1wFapdo0OsaoAPU2pj4Q2bkVH1urXnD6m" alt='left arrow icon' width={'60px'}/>
+                    </a>
+                    <a type="button" className="btn btn-link" style={{right: '150px'}} data-bs-toggle="modal" data-bs-target="#modal-edit-book"><h5>Edit</h5></a>
+                    <a type="button" className="btn btn-link" style={{right: '5vw'}} data-bs-toggle="modal" data-bs-target="#modal-delete-book"><h5>Delete</h5></a>
+                </div>
+                <div className='detailContent'>
+                    <div className="row">
+                        <div className="col">
+                            <div className="row">
+                                <div className="col" style={{marginBottom: '20px'}}>
+                                    <button type="button" className="btn btn-warning text-white" style={{borderRadius: '15px', padding: '1px 20px', backgroundColor: '#FBCC38', border: 'none'}}>Novel</button>
+                                    <h1 style={{margin: '5px 0'}}><b>{title}</b></h1>
+                                    <p><b>{data.author}</b></p>
+                                </div>
+                                <div className="col text-end" style={{padding: '40px 0'}}>
+                                    <h4 style={{color: '#99D815'}}><b>Available</b></h4>
+                                </div>
+                            </div>
+                            <p>{data.desc}</p>
+                        </div>
+                        <div className="col-1 text-center"></div>
+                        <div className="col-3 text-end"  style={{position: 'relative'}}>
+                            <button type="button" className="btn btn-warning mybuttonYellow shadow"><h5>Borrow</h5></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,22 +71,22 @@ function Detail() {
             <div className="modal-dialog modal-xl modal-dialog-centered">
                 <div className="modal-content" style={{padding: '2vh 2vw'}}>
                 <div className="text-end" style={{marginTop: '10px'}}>
-                    <a type="button" data-bs-dismiss="modal"><img src="images/ic-cross.png" height="20px" /></a>
+                    <a type="button" data-bs-dismiss="modal"><img src="https://drive.google.com/uc?export=view&id=1UvlM0WccFqfQzQe2yN3YiwdZHd0BLB_G" alt='cross icon' height="20px" /></a>
                 </div>
                 <div className="modal-body text-start" style={{padding: '2vh 2vw'}}>
                     <h3 className="mb-3">Edit data</h3>
                     <form>
                     <div className="row g-3 align-items-center mb-3">
                         <div className="col-3"><label htmlFor="edit-url-image" className="form-label">Url Image</label></div>
-                        <div className="col-9"><input type="url" className="form-control" id="edit-url-image" placeholder="http://gambar.com/dilan.jpg" /></div>
+                        <div className="col-9"><input type="url" className="form-control" id="edit-url-image" defaultValue={data.imageUrl} placeholder="http://gambar.com/dilan.jpg" /></div>
                     </div>
                     <div className="row g-3 align-items-center mb-3">
                         <div className="col-3"><label htmlFor="edit-book-title" className="form-label">Title</label></div>
-                        <div className="col-9"><input type="text" className="form-control" id="edit-book-title" placeholder="Dilan 1990" /></div>
+                        <div className="col-9"><input type="text" className="form-control" id="edit-book-title" defaultValue={data.title} placeholder="Dilan 1990" /></div>
                     </div>
                     <div className="row g-3 align-items-center mb-3">
                         <div className="col-3"><label htmlFor="edit-book-description" className="form-label">Description</label></div>
-                        <div className="col-9"><textarea className="form-control" name="description" rows={4} cols={30} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac diam eget est rutrum ultrices. Donec laoreet enim a massa dapibus, cursus egestas dui pulvinar." defaultValue={""} /> </div>
+                        <div className="col-9"><textarea className="form-control" name="description" rows={4} cols={30} defaultValue={data.desc} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac diam eget est rutrum ultrices. Donec laoreet enim a massa dapibus, cursus egestas dui pulvinar."/> </div>
                     </div>
                     <div className="row g-3 align-items-center text-end">
                         <div className="col-9" />
@@ -78,20 +100,21 @@ function Detail() {
 
             {/* MODAL DELETE | using bootstrap */}
             <div className="modal fade" id="modal-delete-book" tabIndex={-1} aria-labelledby="button" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content" style={{padding: '2vh 2vw 3vh 2vw'}}>
-                <div className="text-end" style={{marginTop: '10px'}}>
-                    <a type="button" data-bs-dismiss="modal"><img src="images/ic-cross.png" height="20px" /></a>
-                </div>
-                <div className="modal-body text-center">
-                    <img src="images/ic-check.png" height="80%" />                            
-                    <h5><br />Data <b>Dilan 1990</b> berhasil dihapus !</h5>
-                </div>
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content" style={{padding: '2vh 2vw 3vh 2vw'}}>
+                    <div className="text-end" style={{marginTop: '10px'}}>
+                        <a type="button" data-bs-dismiss="modal"><img src="https://drive.google.com/uc?export=view&id=1UvlM0WccFqfQzQe2yN3YiwdZHd0BLB_G" alt='cross icon' height="20px" /></a>
+                    </div>
+                    <div className="modal-body text-center">
+                        <img src="https://drive.google.com/uc?export=view&id=18-RS-qM7_eNf0IdNLYlyHxypDZgNMNZN" height="80%" alt='check icon'/>                            
+                        <h5><br />Data buku <b>{title}</b> berhasil dihapus !</h5>
+                    </div>
+                    </div>
                 </div>
             </div>
-            </div>
-
-        </div>
+            </>
+            )
+        }
         </>
     )
 }
