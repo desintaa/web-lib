@@ -3,11 +3,35 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './router'
+import store from './store';
+import {Provider} from 'react-redux'
+// import {configureStore} from "@reduxjs/toolkit"
+// // import Books from './data-dummy/Books';
+// import {booksReducer} from './data-dummy/Books'
+
+// const store = configureStore({
+//   reducer: {
+//     books: booksReducer
+//   }
+// })
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     {/* <Provider> */}
+//       <App/>
+//     {/* </Provider> */}
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// )
+
+// CODE AMAN ⇓
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>
 );
 

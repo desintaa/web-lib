@@ -24,4 +24,9 @@ function isHeaderEmpty(val) {
     }
 }
 
-export {toggleSideBar, cutString, isHeaderEmpty}
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+export {toggleSideBar, cutString, isHeaderEmpty, scrollToTop}

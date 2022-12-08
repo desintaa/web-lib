@@ -5,7 +5,6 @@ import Home from './pages/home/home'
 import Login from './components/form/formLogin'
 import Register from './components/form/formRegister'
 import Detail from './pages/detail/detail'
-// import App from './App'
 
 function Router() {
     return(

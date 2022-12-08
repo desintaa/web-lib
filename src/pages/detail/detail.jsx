@@ -1,35 +1,34 @@
 import './detail.css'
 import React, {useState} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { bookData } from '../../data-dummy/book-data'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { isHeaderEmpty } from '../../components/functions'
+import BtnsHeader from './btn-on-header'
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteBook, updateBook } from '../../data-dummy/Books';
 
 function Detail({props}) {
-    // const [bookDetail, setDetail] = useState({})
     var {title} = useParams()
 
     const navigate = useNavigate()
 
-    // const getDetail = async() => {
-    //     try {
-    //         const {data} = 
-    //     }
-    // }
-
-    // localStorage.setItem("bookTitle",title)
-    // var bookTitle = (localStorage.getItem("bookTitle"))
-    // console.log(bookTitle)
+    //CRUD (using react-redux)
+    const bookList = useSelector((state) => state.books.value)
+    const dispatch = useDispatch();
+    const [newImageUrl, setNewImageUrl] = useState('');
+    const [newTitle, setNewTitle] = useState('');
+    const [newAuthor, setNewAuthor] = useState('');
+    const [newDesc, setNewDesc] = useState('');
 
     return (
         <>
         {
-            bookData
+            bookList
             .filter((data) => data.title === title)
             .map((data) =>
             <>
             
             <div id='myBookDetail'>
-                <div className='thumbnail'>
+                <div id='thumbnail'>
                     <div>
                         <img className='bookImageSmall shadow-lg' src={data.imageUrl} alt='book cover' width="180px" />
                     </div>
@@ -40,8 +39,7 @@ function Detail({props}) {
                     <a id="back-button-on-detail" role="button" onClick={() => navigate(-1)} className="btn btn-link" style={{position: 'fixed', top: 0, left: 0}}>
                         <img src="https://drive.google.com/uc?export=view&id=1wFapdo0OsaoAPU2pj4Q2bkVH1urXnD6m" alt='left arrow icon' width={'60px'}/>
                     </a>
-                    <a type="button" className="btn btn-link" style={{right: '150px'}} data-bs-toggle="modal" data-bs-target="#modal-edit-book"><h5>Edit</h5></a>
-                    <a type="button" className="btn btn-link" style={{right: '5vw'}} data-bs-toggle="modal" data-bs-target="#modal-delete-book"><h5>Delete</h5></a>
+                    <BtnsHeader/>
                 </div>
                 <div className='detailContent'>
                     <div className="row">
@@ -75,24 +73,58 @@ function Detail({props}) {
                 </div>
                 <div className="modal-body text-start" style={{padding: '2vh 2vw'}}>
                     <h3 className="mb-3">Edit data</h3>
-                    <form>
-                    <div className="row g-3 align-items-center mb-3">
-                        <div className="col-3"><label htmlFor="edit-url-image" className="form-label">Url Image</label></div>
-                        <div className="col-9"><input type="url" className="form-control" id="edit-url-image" defaultValue={data.imageUrl} placeholder="http://gambar.com/dilan.jpg" /></div>
+                    <div>
+                        <div className="row g-3 align-items-center mb-3">
+                            <div className="col-3">
+                                <label htmlFor="edit-url-image" className="form-label">Url Image</label>
+                            </div>
+                            <div className="col-9">
+                                <input id="edit-image" type="url" className="form-control"  onChange={(e) => {setNewImageUrl(e.target.value)}}  defaultValue={data.imageUrl} placeholder="http://gambar.com/dilan.jpg" />
+                            </div>
+                        </div>
+                        <div className="row g-3 align-items-center mb-3">
+                            <div className="col-3">
+                                <label htmlFor="edit-book-title" className="form-label">Title</label>
+                            </div>
+                            <div className="col-9">
+                                <input id="edit-title" type="text" className="form-control"  onChange={(e) => {setNewTitle(e.target.value)}}  defaultValue={data.title} placeholder="Dilan 1990" disabled/>
+                            </div>
+                        </div>
+                        <div className="row g-3 align-items-center mb-3">
+                            <div className="col-3">
+                                <label htmlFor="edit-book-author" className="form-label">Author</label>
+                            </div>
+                            <div className="col-9">
+                                <input id="edit-author" type="text" className="form-control"  onChange={(e) => {setNewAuthor(e.target.value)}}  defaultValue={data.author} placeholder="Pidi Baiq" />
+                            </div>
+                        </div>
+                        <div className="row g-3 align-items-center mb-3">
+                            <div className="col-3">
+                                <label htmlFor="edit-book-description" className="form-label">Description</label>
+                            </div>
+                            <div className="col-9">
+                                <textarea id="edit-desc" className="form-control"  onChange={(e) => {setNewDesc(e.target.value)}}  name="description" rows={4} cols={30} defaultValue={data.desc} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac diam eget est rutrum ultrices. Donec laoreet enim a massa dapibus, cursus egestas dui pulvinar."/> 
+                            </div>
+                        </div>
+                        <div className="row g-3 align-items-center text-end">
+                            <div className="col-9" />
+                            {/* <Link to={`/detail/${newTitle}`}> */}
+                                <div className="col-3">
+                                    <button className="btn btn-primary mybuttonYellow shadow"
+                                    onClick={() => {dispatch(updateBook({
+                                        id: data.id, 
+                                        author: newAuthor,
+                                        desc: newDesc,
+                                        imageUrl: newImageUrl
+                                    }))}} 
+                                    data-bs-dismiss="modal">
+                                        Save
+                                    </button>
+                                </div>
+                            {/* </Link> */}
+                            {console.log('JUDUL BARU '+ newAuthor)}
+                        </div>
                     </div>
-                    <div className="row g-3 align-items-center mb-3">
-                        <div className="col-3"><label htmlFor="edit-book-title" className="form-label">Title</label></div>
-                        <div className="col-9"><input type="text" className="form-control" id="edit-book-title" defaultValue={data.title} placeholder="Dilan 1990" /></div>
-                    </div>
-                    <div className="row g-3 align-items-center mb-3">
-                        <div className="col-3"><label htmlFor="edit-book-description" className="form-label">Description</label></div>
-                        <div className="col-9"><textarea className="form-control" name="description" rows={4} cols={30} defaultValue={data.desc} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac diam eget est rutrum ultrices. Donec laoreet enim a massa dapibus, cursus egestas dui pulvinar."/> </div>
-                    </div>
-                    <div className="row g-3 align-items-center text-end">
-                        <div className="col-9" />
-                        <div className="col-3"><button type="submit" className="btn btn-primary mybuttonYellow shadow">Save</button></div>
-                    </div>
-                    </form>
                 </div>
                 </div>
             </div>
@@ -104,6 +136,7 @@ function Detail({props}) {
                     <div className="modal-content" style={{padding: '2vh 2vw 3vh 2vw'}}>
                     <div className="text-end" style={{marginTop: '10px'}}>
                         <a type="button" data-bs-dismiss="modal"><img src="https://drive.google.com/uc?export=view&id=1UvlM0WccFqfQzQe2yN3YiwdZHd0BLB_G" alt='cross icon' height="20px" /></a>
+                        {/* <a type="button" onClick={() => {dispatch(deleteBook({id: data.id}))}} data-bs-dismiss="modal"><img src="https://drive.google.com/uc?export=view&id=1UvlM0WccFqfQzQe2yN3YiwdZHd0BLB_G" alt='cross icon' height="20px" /></a> */}
                     </div>
                     <div className="modal-body text-center">
                         <img src="https://drive.google.com/uc?export=view&id=18-RS-qM7_eNf0IdNLYlyHxypDZgNMNZN" height="80%" alt='check icon'/>                            

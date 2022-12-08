@@ -3,6 +3,7 @@
     url("./photo-lib.png");
     background-size: cover;
     background-position: center;
+    overflow: hidden;
 }
 
 .mytext {

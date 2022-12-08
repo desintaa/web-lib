@@ -3,17 +3,17 @@
     height: 100vh;
 }
 
-#myBookDetail .thumbnail {
+#myBookDetail#thumbnail {
     position: relative;
 }
 
-#myBookDetail .thumbnail div {
+#myBookDetail #thumbnail div {
     position: absolute;
     right: 5vw;
     top: 20vh;
 }
 
-#myBookDetail .thumbnail img {
+#myBookDetail #thumbnail img {
     border-radius: 15px;
 }
 

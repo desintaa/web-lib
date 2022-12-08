@@ -12,10 +12,10 @@ function FormRegister() {
     return (
         <>
         <main id="loginRegister" className='row' style={{width:'100%'}}>
-        <div className="col-7 bgImage" style={{height:'100vh'}}>
+        <div className="col-1 col-md-6 col-lg-7 bgImage" style={{height:'100vh'}}>
             <h1 className='mytext'><b>Book is a window to the world</b></h1>
         </div>
-        <div className="col-5" style={{height:'100vh'}}>
+        <div className="col" style={{height:'100vh'}}>
             <div className="flex-container-col"  style={{height:'100vh'}}>
                 <div className="rowTop text-end">
                     <img className='logoLibrary' src="images/ic-lib.png" alt="logo library"/>
