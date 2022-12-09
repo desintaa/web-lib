@@ -64,7 +64,7 @@ function Detail({props}) {
                 </div>
             </div>
 
-            {/* MODAL EDIT | using bootstrap */}
+            {/* Modal Edit Book */}
             <div className="modal fade" id="modal-edit-book" tabIndex={-1} aria-labelledby="button-edit" aria-hidden="true">
             <div className="modal-dialog modal-xl modal-dialog-centered">
                 <div className="modal-content" style={{padding: '2vh 2vw'}}>
@@ -130,7 +130,7 @@ function Detail({props}) {
             </div>
             </div>
 
-            {/* MODAL DELETE | using bootstrap */}
+            {/* Modal delete book */}
             <div className="modal fade" id="modal-delete-book" tabIndex={-1} aria-labelledby="button" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content" style={{padding: '2vh 2vw 3vh 2vw'}}>

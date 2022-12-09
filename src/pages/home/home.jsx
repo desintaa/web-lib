@@ -39,12 +39,14 @@ function Home() {
     <div id="home">
       <div className="row">
 
+        {/* Side bar on left side */}
         <div id="sidebar" className='col-12 col-lg-3 shadow'>
           <div>
             <Sidebar/>
           </div>
         </div>
 
+        {/* Content on right side */}
         <div id="content" className='col'>
           <div id="navbar" className=''>
             <Navbar/>
@@ -54,8 +56,9 @@ function Home() {
               <div className="list-book">
                 <h3>List Book</h3>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                  {bookList.map((book) => {
+                  {bookList.map((book) => { //ditambahin key
                     return <CardListBook 
+                      // key (bisa ambil id/judul buku) [key=book.id]
                       imageUrl = {book.imageUrl} 
                       title = {book.title} 
                       desc = {book.desc}/>
@@ -65,6 +68,7 @@ function Home() {
             </div>
         </div>
         
+        {/* Modal Add Book */}
         <div id="modal-add-book" className="modal fade" tabIndex={-1} aria-labelledby="button-add" aria-hidden="true">
             <div className="modal-dialog modal-xl modal-dialog-centered">
                 <div className="modal-content" style={{padding: '2vh 2vw'}}>
